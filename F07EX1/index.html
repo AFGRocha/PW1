@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/vue.js"></script>   
+    <script src="js/main.js"></script>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F07EX01</title>
+</head>
+<body>
+    <div id="intro" >
+            <h2>MyTravels</h2>
+
+            <input v-model="travel"></input> 
+            <label for="">País</label>
+            <input v-model="pais"></input> 
+            <label for="sltContinente">Continente: </label>
+            <select id="sltContinete" v-model="continente">
+                <option value="Europa">Europa</option>
+                <option value="Asia">Asia</option>
+                <option value="America do Norte">America do Norte</option>
+                <option value="America do Sul">America do Sul</option>
+                <option value="Africa">Africa</option>
+                <option value="Oceania">Oceania</option>
+            </select>
+            <p>Descrição:</p>
+            <input v-model="desc"></input> 
+            <input v-model="type" id="rdFerias" type="radio" value="ferias">
+            <label for="rdFerias">Ferias</label>
+            <input v-model="type" id="rdNegocio" type="radio" value="negocio">
+            <label for="rdNegocio">Negocio</label>
+            <br><br>
+            <label for="">Ida</label>
+            <input type="date" v-model="departure">
+            <label for="">Volta</label>
+            <input type="date" v-model="arrival"> 
+            <p>Link da Foto:</p>
+            <input v-model="foto"></input>
+            <br><br> 
+            <button v-on:click="addTravel" v-bind:disabled="travel.length==0">Adicionar</button>
+            <br><br>
+
+
+
+            <label for="sltFilter">FILTRO: </label>
+            <label for="">Continente: </label>
+            <select id="sltFilter" v-model="filter" v-on:change="fillterArray">
+                <option value="all">Todos</option>  
+                <option value="Europa">Europa </option>
+                <option value="Asia">Asia </option>
+                <option value="America do Norte">America do Norte </option>
+                <option value="America do Sul">America do Sul </option>
+                <option value="Africa">Africa </option>
+                <option value="Oceania">Oceania </option>
+            </select>
+
+            <label for="">Data: </label>
+            <input type="date" v-model="dateFilter" v-on:change="fillterArray"></input>
+
+            
+            <label for="">Tipo: </label>
+            <select id="tipoFilter" v-model="typeFilter" v-on:change="fillterArray">
+                <option value="all">Todos</option>  
+                <option value="ferias">Ferias</option> 
+                <option value="negocio">Negocio</option> 
+            </select>
+            <br><br>
+
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Viagem</th>
+                    <th>País</th>
+                    <th>Continente</th>
+                    <th>Descrição</th>
+                    <th>Data de partida</th>
+                    <th>Data de chegada</th>
+                    <th>Tipo</th>
+                    <th>Foto</th>
+                </tr>
+                <tr v-for="(travel, index) in filteredTravels">
+                    <td>{{index+1}}</td>
+                    <td>{{travel.name}}</td>
+                    <td>{{travel.pais}}</td>
+                    <td>{{travel.continente}}</td>
+                    <td>{{travel.desc}}</td>
+                    <td>{{travel.departure}}</td>
+                    <td>{{travel.arrival}}</td>
+                    <td>{{travel.type}}</td>
+                    <td>{{travel.foto}}</td>
+                    
+                    <td>
+                        <button v-on:click="removeTask(index)">REMOVE</button>
+                         <button id="show-modal" @click="editTravel(index)">Edit</button>
+                    </td>
+                </tr>
+            </table>
+                </ul>
+                <button v-on:click="">Ordenar</button>
+
+
+                
+            <dialog id="editTravelDialog">
+            <input v-model="editName"></input> 
+            <label for="">País</label>
+            <input v-model="editPais"></input> 
+            <label for="sltContinente">Continente: </label>
+            <select id="sltContinete" v-model="editContinente">
+                <option value="Europa">Europa</option>
+                <option value="Asia">Asia</option>
+                <option value="America do Norte">America do Norte</option>
+                <option value="America do Sul">America do Sul</option>
+                <option value="Africa">Africa</option>
+                <option value="Oceania">Oceania</option>
+            </select>
+            <p>Descrição:</p>
+            <input v-model="editDesc"></input> 
+            <input v-model="editType" id="rdFerias" type="radio" value="ferias">
+            <label for="rdFerias">Ferias</label>
+            <input v-model="editType" id="rdNegocio" type="radio" value="negocio">
+            <label for="rdNegocio">Negocio</label>
+            <br><br>
+            <label for="">Ida</label>
+            <input type="date" v-model="editDeparture">
+            <label for="">Volta</label>
+            <input type="date" v-model="editArrival"> 
+            <p>Link da Foto:</p>
+            <input v-model="editFoto"></input>
+            <br><br> 
+            <button v-on:click="saveEdit(editIndex)">Guardar</button>
+              </dialog>
+                
+    </div>
+
+  
+</body>
+</html>

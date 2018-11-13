@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/vue.js"></script>   
+    <script src="js/main.js"></script>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F02EX01</title>
+</head>
+<body>
+    <div id="intro">
+            <button v-on:click="plus">+</button>
+            <span>{{number}}</span>
+            <button v-bind:disabled="isValue0" v-on:click="minus">-</button>
+            <h2 v-if="number==0">NUMERO INVALIDO</h2>
+           
+            
+    </div>
+  
+</body>
+</html>

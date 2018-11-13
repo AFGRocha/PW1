@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/vue.js"></script>   
+    <script src="js/main.js"></script>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F04EX02</title>
+</head>
+<body>
+    <div id="intro" >
+            <h2>My ToDoList</h2>
+
+            <input v-model="task"></input> 
+            <input v-model="type" id="rdPersonal" type="radio" value="pessoal">
+            <label for="rdPersonal">PESSOAL</label>
+            <input v-model="type" id="rdProfessional" type="radio" value="professional">
+            <label for="rdProfessional">PROFESSIONAL</label>
+            <button v-on:click="addTask" v-bind:disabled="task.length==0">Adicionar</button>
+            <br><br>
+            <label for="sltFilter">FILTRO: </label>
+            <select id="sltFilter" v-model="filter" v-on:change="fillterArray">
+                <option value="all">ALL</option>
+                <option value="pessoal">PERSONAL</option>
+                <option value="professional">PROFESSIONAL</option>
+            </select>
+            <br><br>
+
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>TASK</th>
+                    <th>TYPE</th>
+                    <th>OPTIONS</th>
+                </tr>
+                <tr v-for="(task, index) in filteredTasks">
+                    <td>{{index+1}}</td>
+                    <td>{{task.name}}</td>
+                    <td>{{task.type}}</td>
+                    
+                    <td>
+                        <button v-on:click="removeTask(index)">REMOVE</button>
+                    </td>
+                </tr>
+            </table>
+                </ul>
+                
+    </div>
+    
+    
+  
+</body>
+</html>

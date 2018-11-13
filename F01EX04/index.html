@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/vue.js"></script>     
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F01EX04</title>
+</head>
+<body>
+        <div id="intro">
+
+                <h1 v-if="productAvailability">DISPONIVEL</h1>
+                <h1 v-else>NÃO DISPONIVEL</h1>
+                <h2>Produto: {{productName}} </h2>
+                <h2>Descrição: <span v-html="productDesc"></span> </h2>
+                <h2 v-if="productPrice < 1000">Preço: {{productPrice}}</h2>
+                <button v-on:click="reset">Reset</button>
+                <h2>Imagem:</h2>
+                <img v-bind:src="productImage"/>
+                <button v-if="productAvailability" v-on:click="buy">Comprar</button>
+                
+               </div>
+               
+</body>
+<script>
+  const vm = new Vue({
+    el: "#intro",
+    data: {
+    productName: "Computador Titan W599",
+    productDesc: "Processador i7<br>Disco SSD 256GB<br> Monitor Samsung 21’",
+    productImage: "https://www.titancomputers.com/v/vspfiles/photos/W599-7.jpg",
+    productPrice: 1200,
+    productAvailability: true
+    },
+    methods:{
+    reset: function(){
+        vm.productPrice = 1200
+
+    },
+    buy(){
+        this.productAvailability = false
+    }
+    }
+
+    }) 
+   
+
+</script>
+</html>

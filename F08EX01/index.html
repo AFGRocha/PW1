@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/vue.js"></script>   
+    <script src="js/main.js"></script>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F08EX01</title>
+</head>
+<body>
+    <div id="intro" >
+            <h2>PortugalCastles</h2>
+
+            <label>Nome do Castelo</label>
+            <input v-model="name"></input> 
+            <br><br>
+            <label>Foto</label>
+            <input type="url" v-model="photo"></input> 
+            <br><br>
+            <label>Ano</label>
+            <input v-model="year"></input> 
+            <br><br>
+            <button v-on:click="addCastle" v-bind:disabled="name.length==0">Adicionar</button>
+
+
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Castelo</th>
+                    <th>Ano</th>
+                </tr>
+                <tr v-for="(castle, index) in castles">
+                    <td>{{index+1}}</td>
+                    <td>{{castle.nome}}</td>
+                    <td>{{castle.ano}}</td>
+                    
+                    <td>
+                        <button v-on:click="viewCastle(index)">Ver Foto</button>
+                        <button v-on:click="editCastle(index)">Editar</button>
+                    </td>
+                </tr>
+            </table>
+                </ul>
+
+              
+                <dialog id="viewCastleDialog">
+                    <img v-bind:src="dCastleImg">
+                    <br>
+                    <button v-on:click="closeDialog()">Fechar</button>
+
+                </dialog>
+
+                <dialog id="editCastleDialog">
+                        <label>Nome do Castelo</label>
+                        <input v-model="editName"></input> 
+                        <br><br>
+                        <label>Foto</label>
+                        <input type="url" sv-model="editPhoto"></input> 
+                        <br><br>
+                        <label>Ano</label>
+                        <input v-model="editYear"></input> 
+                        <br><br>
+                        <button v-on:click="saveCastle">Gravar</button>
+    
+                    </dialog>
+
+
+                    <br><br>
+                    <div>
+                        <button v-on:click="removeStr">Remover Castelo</button>
+                        <button v-on:click="media">media</button>
+                        <button v-on:click="checkMarvao">Marvao</button>
+                        <button v-on:click="filterA">Começa com A</button>
+                        <button v-on:click="checksLinks">Verificar se os links estao preenchidos</button>
+                        <button v-on:click="">Fill</button>
+                        <button v-on:click="findMaria">Procura Maria</button>
+                        <button v-on:click="findArroilos">Procura Index Arr</button>
+                    </div>
+
+                    <br><br>
+
+                    <div>
+                            <button v-on:click="replaceHifen">Remover espaços</button>
+                            <button v-on:click="modernCastlefy">Castelos depois de 1950</button>
+                            <button v-on:click="cleanLinks1000">Links antes de 1000</button>
+                            <button v-on:click="incressYearBy5">Aumentar anos por 5 se começar por vogal</button>
+                    </div>
+    </div>  
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/vue.js"></script>   
+    <script src="js/main.js"></script>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F02EX01</title>
+</head>
+<body>
+    <div id="intro">
+            
+            <span>Primeiro nome: {{person.firstName}}</span>
+            <br>
+            <span>Apelido: {{person.lastName}}</span>  
+            <br>
+            <span>Idade: {{person.age}}</span>
+            <br><br>
+            <button v-on:click="dataPerson" type="button">Method</button>
+            <br><br>
+            <button v-on:click="dataPersonComputed" type="button">Computed</button>
+
+    </div>
+  
+</body>
+</html>

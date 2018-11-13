@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/vue.js"></script>   
+    <script src="js/main.js"></script>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F02EX01</title>
+</head>
+<body>
+    <div id="intro">
+            
+            <span v-bind:style="{color: textColor, 'font-size': fontSize,'background-color': backColor, visibility: show}">{{msg}}</span>  
+            <br><br>  
+            <button v-on:click="formatTextColor('red')">RED</button>
+            <button v-on:click="bigText('34px')">BIG</button>
+            <button v-on:click="backgroundColor('yellow')">YELLOW</button>
+            <button v-on:click="showText">SHOW/HIDE</button>
+    </div>
+  
+</body>
+</html>

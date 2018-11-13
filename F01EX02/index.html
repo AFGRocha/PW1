@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/vue.js"></script>     
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F01EX02</title>
+</head>
+<body>
+        <div id="intro">
+                <h2>First name: {{firstName}}</h2>
+                <h2>Last name: {{lastName}}</h2>
+                <h2>Age: {{age}}</h2>
+                <h2>Full name: {{fullName()}}</h2>
+        </div>
+</body>
+<script>
+ const vn = new Vue({
+     el: "#intro",
+     data: {
+         firstName: "",
+         lastName: "",
+         age: ""
+     },
+     methods: {
+        fullName: function(){
+            return `${this.firstName} ${this.lastName}`
+        }
+     }
+ })
+
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/vue.js"></script>     
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F01EX03</title>
+</head>
+<body>
+        <div id="intro">
+                <h2>Peso: {{weight}} kgs</h2>
+               </div>
+               
+</body>
+<script>
+ const vn = new Vue({
+     el: "#intro",
+     data: {
+         weight: "10",
+     },
+     beforeCreate: function(){
+         console.log(`${this.weight}`)
+     },
+     created: function(){
+        console.log(`${this.weight}`)
+     },
+     beforeMount: function(){
+        console.log(`${this.weight}`)
+     },
+     updated: function(){
+        console.log(`${this.weight}`)
+     },
+     beforeDestroy: function(){
+         console.log(`${this.weight}`)
+         },
+     destroyed: function(){
+        console.log(`${this.weight}`)
+     }
+ })
+
+</script>
+</html>
